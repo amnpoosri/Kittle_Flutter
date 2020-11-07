@@ -1,8 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:kittle/common/histogram/linear_percent_indicator.dart';
+import 'package:kittle/theme/app_colors.dart';
+import 'package:kittle/theme/app_text_style.dart';
 
 class HistogramBar extends StatelessWidget {
+  final String name;
+  final int value;
+  final double percentage;
+  final Color color;
+
+  HistogramBar({
+    @required this.name,
+    @required this.value,
+    @required this.percentage,
+    @required this.color,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: Flex(
+        direction: Axis.horizontal,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Text(name, style: AppTextStyle.caption2),
+          ),
+          Expanded(
+            flex: 14,
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: LinearPercentIndicator(
+                lineHeight: 28.0,
+                percent: percentage,
+                backgroundColor: Colors.transparent,
+                progressColor: color.withOpacity((percentage)),
+                animation: true,
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                linearStrokeCap: LinearStrokeCap.butt,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(value.toString(), style: AppTextStyle.caption2),
+          ),
+        ],
+      ),
+    );
   }
 }
