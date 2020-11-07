@@ -8,7 +8,7 @@ class AppColors {
   static const Color sunGlow = Color(0xFFffd23f);
   static const Color emerald = Color(0xFF259379);
   static const Color green = Color(0xFF0c975b);
-
+  static const Color flame = Color(0xFFE53D00);
   static const Color black = Color(0xFF000000);
-  static const Color shark = Color(0xFF29292D);
+  static const Color shark = Color(0xFF30425e);
 }

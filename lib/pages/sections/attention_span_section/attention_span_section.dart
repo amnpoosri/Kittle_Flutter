@@ -28,7 +28,7 @@ class AttentionSpanSectionState extends State<AttentionSpanSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionTile(
-          title: "Attention span for each animtion (in seconds)",
+          title: "Attention span for each animation (in seconds)",
         ),
         SizedBox(height: 20,),
         AspectRatio(

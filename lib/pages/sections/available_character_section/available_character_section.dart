@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kittle/common/section_tile.dart';
 import 'package:kittle/mock/data.dart';
-import 'package:kittle/pages/analytic_page.dart';
+import 'package:kittle/models/character.dart';
 import 'package:kittle/theme/app_text_style.dart';
 
 class AvailableCharacterSection extends StatelessWidget {
+  final Function(Character character) onCharacterTap;
+
+  AvailableCharacterSection({@required this.onCharacterTap});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,10 +24,7 @@ class AvailableCharacterSection extends StatelessWidget {
                     margin: EdgeInsets.only(right: 16, top: 16, bottom: 16),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AnalyticPage()),
-                        );
+                        onCharacterTap(e);
                       },
                       borderRadius: BorderRadius.circular(16),
                       child: Container(

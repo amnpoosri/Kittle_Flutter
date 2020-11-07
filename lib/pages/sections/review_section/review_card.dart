@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:kittle/models/review.dart';
 import 'package:kittle/theme/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:js' as js;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 final kDefaultCardShadow = BoxShadow(
   offset: Offset(0, 20),
@@ -10,10 +15,8 @@ final kDefaultCardShadow = BoxShadow(
 
 class ReviewCard extends StatefulWidget {
   final Review review;
-  const ReviewCard({
-    Key key,
-    this.review
-  }) : super(key: key);
+
+  const ReviewCard({Key key, this.review}) : super(key: key);
 
   @override
   _ReviewCardState createState() => _ReviewCardState();
@@ -22,12 +25,29 @@ class ReviewCard extends StatefulWidget {
 class _ReviewCardState extends State<ReviewCard> {
   Duration duration = Duration(milliseconds: 200);
   bool isHover = false;
+
+  _launchURL() async {
+    final String url = widget.review.link;
+    print(url);
+    if(kIsWeb) {
+      js.context.callMethod('open', [url]);
+    } else {
+      if (await canLaunch(url)) {
+        print(url);
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 16),
       child: InkWell(
-        onTap: () {},
+        onTap: _launchURL,
         hoverColor: Colors.transparent,
         onHover: (value) {
           setState(() {

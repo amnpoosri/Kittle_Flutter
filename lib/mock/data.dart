@@ -27,26 +27,30 @@ final List<Review> reviews = [
   Review(
       name: 'Krister A.',
       description:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
-      image: ImageAssets.person1),
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+      image: ImageAssets.person1, link: 'https://www.linkedin.com/in/kristeralasaarela'),
   Review(
       name: 'Amnuaychai P.',
       description:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
-      image: ImageAssets.person2),
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+      image: ImageAssets.person2,
+      link: 'https://www.linkedin.com/in/amnuaychai-poosri-97745a153/'),
   Review(
       name: 'Aarni A.',
       description:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
-      image: ImageAssets.person3),
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+      image: ImageAssets.person3,
+      link: 'https://www.linkedin.com/in/aarnia/'),
   Review(
       name: 'Pera S.B.',
       description:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
-      image: ImageAssets.person4),
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+      image: ImageAssets.person4,
+      link: 'https://www.linkedin.com/in/perabjoth-singh-bajwa-8300716a/'),
   Review(
       name: 'Nour S.',
       description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
-      image: ImageAssets.person5),
+      image: ImageAssets.person5,
+      link: 'https://www.linkedin.com/in/noro/'),
 ];
