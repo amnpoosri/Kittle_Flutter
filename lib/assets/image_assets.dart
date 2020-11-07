@@ -12,4 +12,5 @@ class ImageAssets {
   static final String person2 = 'assets/person2.jpg';
   static final String person3 = 'assets/person3.jpg';
   static final String person4 = 'assets/person4.jpg';
+  static final String person5 = 'assets/person5.jpg';
 }

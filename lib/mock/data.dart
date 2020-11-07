@@ -44,4 +44,9 @@ final List<Review> reviews = [
       description:
           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
       image: ImageAssets.person4),
+  Review(
+      name: 'Nour S.',
+      description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+      image: ImageAssets.person5),
 ];

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kittle/common/section_tile.dart';
 import 'package:kittle/mock/data.dart';
+import 'package:kittle/pages/analytic_page.dart';
 import 'package:kittle/theme/app_text_style.dart';
 
 class AvailableCharacterSection extends StatelessWidget {
@@ -17,35 +18,46 @@ class AvailableCharacterSection extends StatelessWidget {
                 .map(
                   (e) => Container(
                     margin: EdgeInsets.only(right: 16, top: 16, bottom: 16),
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AnalyticPage()),
+                        );
+                      },
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(0, 1), // changes position of shadow
+                      child: Container(
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: Offset(0, 1), // changes position of shadow
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircleAvatar(
-                          child: Image.asset(e.image),
-                          backgroundColor: Colors.transparent,
-                          radius: 36,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CircleAvatar(
+                              child: Image.asset(e.image),
+                              backgroundColor: Colors.transparent,
+                              radius: 36,
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 16),
+                              child: Text(
+                                e.name,
+                                style: AppTextStyle.body1,
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(
-                            e.name,
-                            style: AppTextStyle.body1,
-                          ),
-                        )
-                      ],
+                      ),
                     ),
                   ),
                 )
