@@ -8,7 +8,7 @@ class AttentionSpanSection extends StatefulWidget {
 }
 
 class AttentionSpanSectionState extends State<AttentionSpanSection> {
-  BarChartGroupData _buildBar({x: int, y: int}) {
+  BarChartGroupData _buildBar({x: int, y: double}) {
     return BarChartGroupData(
       x: x,
       barRods: [
@@ -32,7 +32,7 @@ class AttentionSpanSectionState extends State<AttentionSpanSection> {
         ),
         SizedBox(height: 20,),
         AspectRatio(
-          aspectRatio: 3,
+          aspectRatio: 2.5,
           child: Card(
             elevation: 0,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -101,13 +101,13 @@ class AttentionSpanSectionState extends State<AttentionSpanSection> {
                   show: false,
                 ),
                 barGroups: [
-                  _buildBar(x: 0, y: 25),
-                  _buildBar(x: 1, y: 4),
-                  _buildBar(x: 2, y: 2),
-                  _buildBar(x: 3, y: 12),
-                  _buildBar(x: 4, y: 10),
-                  _buildBar(x: 5, y: 13),
-                  _buildBar(x: 6, y: 3),
+                  _buildBar(x: 0, y: 25.0),
+                  _buildBar(x: 1, y: 4.0),
+                  _buildBar(x: 2, y: 2.0),
+                  _buildBar(x: 3, y: 12.0),
+                  _buildBar(x: 4, y: 10.0),
+                  _buildBar(x: 5, y: 13.0),
+                  _buildBar(x: 6, y: 3.0),
                 ],
               ),
             ),

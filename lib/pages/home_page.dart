@@ -75,41 +75,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final isShowAnalytics = selectedCharacter != null;
-    return Scaffold(
-      backgroundColor: AppColors.shark,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Header(onLogoPress: () {
-              setState(() {
-                selectedCharacter = null;
-              });
-            }),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (!isShowAnalytics) ...[
-                    AvailableCharacterSection(
-                        onCharacterTap: (Character character) {
-                      setState(() {
-                        selectedCharacter = character;
-                      });
-                    }),
-                    _buildCharacterLikenessStats(),
+    return SafeArea(
+      bottom: false,
+      child: Scaffold(
+        backgroundColor: AppColors.shark,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(onLogoPress: () {
+                setState(() {
+                  selectedCharacter = null;
+                });
+              }),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (!isShowAnalytics) ...[
+                      AvailableCharacterSection(
+                          onCharacterTap: (Character character) {
+                        setState(() {
+                          selectedCharacter = character;
+                        });
+                      }),
+                      _buildCharacterLikenessStats(),
+                    ],
+                    if (isShowAnalytics) ...[
+                      _buildSelectedCharacter(),
+                      _buildMovementStats(),
+                      AttentionSpanSection(),
+                    ],
+                    if (!isShowAnalytics) FeedbackSection(),
                   ],
-                  if (isShowAnalytics) ...[
-                    _buildSelectedCharacter(),
-                    _buildMovementStats(),
-                    AttentionSpanSection(),
-                  ],
-                  if (!isShowAnalytics) FeedbackSection(),
-                ],
-              ),
-            )
-          ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

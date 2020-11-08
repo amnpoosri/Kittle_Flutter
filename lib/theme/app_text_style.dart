@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
@@ -31,7 +32,6 @@ class AppTextStyle {
   static final TextStyle body1 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w200,
-
   );
 
   static final TextStyle body2 = TextStyle(

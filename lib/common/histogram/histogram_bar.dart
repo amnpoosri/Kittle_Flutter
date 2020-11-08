@@ -16,8 +16,55 @@ class HistogramBar extends StatelessWidget {
     @required this.color,
   });
 
+  Widget _mobileLayout() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: AppTextStyle.caption2),
+          SizedBox(height: 16,),
+          Container(
+            child: Flex(
+              direction: Axis.horizontal,
+              children: [
+                Expanded(
+                  flex: 14,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      child: LinearPercentIndicator(
+                        lineHeight: 28.0,
+                        percent: percentage,
+                        backgroundColor: Colors.transparent,
+                        progressColor: color.withOpacity((percentage)),
+                        animation: true,
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        linearStrokeCap: LinearStrokeCap.butt,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(value.toString(), style: AppTextStyle.caption2, maxLines: 1,),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 16,),
+        ],
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
+    var shortestSide = MediaQuery.of(context).size.shortestSide;
+    var useMobileLayout = shortestSide < 600;
+
+    if(useMobileLayout) {
+      return _mobileLayout();
+    }
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: Flex(
@@ -44,7 +91,7 @@ class HistogramBar extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: Text(value.toString(), style: AppTextStyle.caption2),
+            child: Text(value.toString(), style: AppTextStyle.caption2, maxLines: 1,),
           ),
         ],
       ),

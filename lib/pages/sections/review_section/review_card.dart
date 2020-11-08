@@ -1,10 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:kittle/models/review.dart';
 import 'package:kittle/theme/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:js' as js;
+
+import 'package:universal_html/html.dart' as html;
+
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 final kDefaultCardShadow = BoxShadow(
@@ -30,7 +30,7 @@ class _ReviewCardState extends State<ReviewCard> {
     final String url = widget.review.link;
     print(url);
     if(kIsWeb) {
-      js.context.callMethod('open', [url]);
+      html.window.open(url, '_blank');
     } else {
       if (await canLaunch(url)) {
         print(url);
@@ -69,16 +69,18 @@ class _ReviewCardState extends State<ReviewCard> {
             children: [
               Transform.translate(
                 offset: Offset(0, -55),
-                child: AnimatedContainer(
-                  duration: duration,
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 10),
-                    boxShadow: [if (!isHover) kDefaultCardShadow],
-                    image: DecorationImage(
-                      image: AssetImage(widget.review.image),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  child: AnimatedContainer(
+                    duration: duration,
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [if (!isHover) kDefaultCardShadow],
+                      image: DecorationImage(
+                        image: AssetImage(widget.review.image),
+                      ),
                     ),
                   ),
                 ),

@@ -15,6 +15,7 @@ class Topic extends StatelessWidget {
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding: EdgeInsets.all(12),
@@ -38,8 +39,10 @@ class Topic extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(title, style: AppTextStyle.caption1),
+                  SizedBox(height: 8,),
                   Text(
                     description,
                     style: AppTextStyle.body1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kittle/pages/home_page.dart';
 import 'package:kittle/theme/app_colors.dart';
 
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: Material(child: HomePage()),
+      home: Material(
+        child: HomePage(),
+      ),
     );
   }
 }
